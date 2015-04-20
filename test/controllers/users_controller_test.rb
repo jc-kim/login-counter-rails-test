@@ -33,12 +33,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test '#signup_failure_dup' do
-    post :signup, {'username' => 'testuser', 'password' => 'testpass'}
-    json = JSON.parse(response.body)
-    assert json['user_name'] == 'testuser'
-    assert json['login_count'] == 1
-
-    post :signup, {'username' => 'testuser', 'password' => 'testpass'}
+    post :signup, {'username' => 'Romeo', 'password' => 'ihatejuliet'}
     json = JSON.parse(response.body)
     assert json['error_code'] == -3
   end
