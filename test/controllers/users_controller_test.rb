@@ -50,4 +50,9 @@ class UsersControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert json['error_code'] == -4
   end
+
+  test '#logout' do
+    get :logout
+    assert_redirected_to root_path
+  end
 end
