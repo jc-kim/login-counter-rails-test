@@ -55,4 +55,11 @@ class UsersControllerTest < ActionController::TestCase
     get :logout
     assert_redirected_to root_path
   end
+
+  test '#clearData' do
+    post :clear_data
+    post :login, {'username': 'Romeo', 'password': 'ilovejuliet'}
+    json = JSON.parse(response.body)
+    assert json['error_code'] == -4
+  end
 end
